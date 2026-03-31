@@ -34,6 +34,7 @@ class RangeSliderCard extends HTMLElement {
 
   async render() {
     const { entity_min, entity_max, min = 0, max = 100, step = 1, name = 'Range Slider', unit = '' } = this.config;
+    const title = this.config.title || name;
     const stateMin = this._hass.states[entity_min];
     const stateMax = this._hass.states[entity_max];
 
@@ -76,7 +77,7 @@ class RangeSliderCard extends HTMLElement {
         }
       </style>
       <div class="container">
-        <div class="title">${name}</div>
+        <div class="title">${title}</div>
         <div class="slider" id="slider"></div>
         <div class="values">
           <span id="min-value">Min: ${Math.round(valueMin)}${unit}</span>
@@ -182,6 +183,7 @@ class RangeSmallSliderCard extends HTMLElement {
 
   async render() {
     const { entity_min, entity_max, min = 0, max = 100, step = 1, name = 'Range Slider', unit = '%' } = this.config;
+    const title = this.config.title || name;
     const stateMin = this._hass.states[entity_min];
     const stateMax = this._hass.states[entity_max];
 
@@ -257,7 +259,7 @@ class RangeSmallSliderCard extends HTMLElement {
         }
       </style>
       <div class="container">
-        <div class="title">${name}</div>
+        <div class="title">${title}</div>
         <div class="slider" id="slider"></div>
         <div class="values">
           <span id="min-value">Min: ${Math.round(valueMin)}${unit}</span>
@@ -354,6 +356,7 @@ class RangeTimeSliderCard extends HTMLElement {
 
   async render() {
     const { entity_time_min, entity_time_max, name = 'Time Range Slider' } = this.config;
+    const title = this.config.title || name;
     const stateTimeMin = this._hass.states[entity_time_min];
     const stateTimeMax = this._hass.states[entity_time_max];
 
@@ -428,7 +431,7 @@ class RangeTimeSliderCard extends HTMLElement {
         }
       </style>
       <div class="container">
-        <div class="title">${name}</div>
+        <div class="title">${title}</div>
         <div class="slider" id="slider"></div>
         <div class="values">
           <span id="min-value">${stateTimeMin.state}</span>
