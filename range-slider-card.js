@@ -33,7 +33,7 @@ class RangeSliderCard extends HTMLElement {
   }
 
   async render() {
-    const { entity_min, entity_max, min = 0, max = 100, step = 1, name = 'Range Slider', unit = '', rows = 1 } = this.config;
+    const { entity_min, entity_max, min = 0, max = 100, step = 1, name = 'Range Slider', unit = '', rows = 1, columns } = this.config;
     const title = this.config.title || name;
     const stateMin = this._hass.states[entity_min];
     const stateMax = this._hass.states[entity_max];
@@ -64,7 +64,7 @@ class RangeSliderCard extends HTMLElement {
           box-sizing: border-box;
         }
         .slider {
-          width: 90%;
+          width: 100%;
           margin: 8px 0;
         }
         .values {
@@ -145,6 +145,13 @@ class RangeSliderCard extends HTMLElement {
   getCardSize() {
     return this.config && this.config.rows ? this.config.rows : 1;
   }
+
+  getGridOptions() {
+    return {
+      columns: this.config && this.config.columns ? this.config.columns : 4,
+      rows: this.config && this.config.rows ? this.config.rows : 1,
+    };
+  }
 }
 
 customElements.define('range-slider-card', RangeSliderCard);
@@ -185,7 +192,7 @@ class RangeSmallSliderCard extends HTMLElement {
   }
 
   async render() {
-    const { entity_min, entity_max, min = 0, max = 100, step = 1, name = 'Range Slider', unit = '%', rows = 1 } = this.config;
+    const { entity_min, entity_max, min = 0, max = 100, step = 1, name = 'Range Slider', unit = '%', rows = 1, columns } = this.config;
     const title = this.config.title || name;
     const stateMin = this._hass.states[entity_min];
     const stateMax = this._hass.states[entity_max];
@@ -212,8 +219,7 @@ class RangeSmallSliderCard extends HTMLElement {
           /* border-radius: 8px; */
           /* background: #f9f9f9; */
           /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-          max-width: 400px;
-          margin: auto;
+          width: 100%;
           min-height: calc(${rows} * 56px);
           box-sizing: border-box;
         }
@@ -319,6 +325,13 @@ class RangeSmallSliderCard extends HTMLElement {
   getCardSize() {
     return this.config && this.config.rows ? this.config.rows : 1;
   }
+
+  getGridOptions() {
+    return {
+      columns: this.config && this.config.columns ? this.config.columns : 4,
+      rows: this.config && this.config.rows ? this.config.rows : 1,
+    };
+  }
 }
 
 customElements.define('range-small-slider-card', RangeSmallSliderCard);
@@ -361,7 +374,7 @@ class RangeTimeSliderCard extends HTMLElement {
   }
 
   async render() {
-    const { entity_time_min, entity_time_max, name = 'Time Range Slider', rows = 1 } = this.config;
+    const { entity_time_min, entity_time_max, name = 'Time Range Slider', rows = 1, columns } = this.config;
     const title = this.config.title || name;
     const stateTimeMin = this._hass.states[entity_time_min];
     const stateTimeMax = this._hass.states[entity_time_max];
@@ -395,8 +408,7 @@ class RangeTimeSliderCard extends HTMLElement {
           align-items: center;
           justify-content: center;
           padding: 4px;
-          max-width: 400px;
-          margin: auto;
+          width: 100%;
           min-height: calc(${rows} * 56px);
           box-sizing: border-box;
         }
@@ -490,6 +502,13 @@ class RangeTimeSliderCard extends HTMLElement {
 
   getCardSize() {
     return this.config && this.config.rows ? this.config.rows : 1;
+  }
+
+  getGridOptions() {
+    return {
+      columns: this.config && this.config.columns ? this.config.columns : 4,
+      rows: this.config && this.config.rows ? this.config.rows : 1,
+    };
   }
 }
 
